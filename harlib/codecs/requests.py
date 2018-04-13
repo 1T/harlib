@@ -404,6 +404,7 @@ class RequestsCodec(object):
     def decode_HarResponseBody_from_Response(self, raw):
         har = self.dict_class()
         har['mimeType'] = raw.headers.get('content-type')
+        raw.encoding = 'utf-8'
         try:
             text = raw.text
         except Exception:
